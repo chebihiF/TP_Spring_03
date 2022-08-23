@@ -11,6 +11,6 @@
     <title>List of Customers</title>
 </head>
 <body>
-    ${customers.size()} customers
+    ${customers[0].name}
 </body>
 </html>
