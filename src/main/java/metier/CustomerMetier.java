@@ -33,6 +33,6 @@ public class CustomerMetier implements ICustomerMetier{
     }
 
     public List<Customer> getCustomers() throws Exception {
-        return null;
+        return dao.getCustomers();
     }
 }

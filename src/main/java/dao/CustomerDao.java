@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import util.HibernateUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDao implements ICustomerDao{
@@ -51,6 +52,18 @@ public class CustomerDao implements ICustomerDao{
     }
 
     public List<Customer> getCustomers() throws Exception {
-        return null;
+        List<Customer> customers = new ArrayList<Customer>();
+        try {
+            session = factory.openSession();
+            session.beginTransaction();
+            customers = session.createQuery("From Customer", Customer.class).getResultList();
+            session.getTransaction().commit();
+        } catch (Exception ex){
+            session.getTransaction().rollback();
+            throw new Exception(ex.getMessage());
+        }finally{
+            session.close();
+        }
+        return customers;
     }
 }
