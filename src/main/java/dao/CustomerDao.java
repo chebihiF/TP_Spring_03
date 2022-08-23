@@ -8,7 +8,6 @@ import util.HibernateUtil;
 import java.util.List;
 
 public class CustomerDao implements ICustomerDao{
-
     private SessionFactory factory = HibernateUtil.getFactory();
     private Session session = null ;
 
